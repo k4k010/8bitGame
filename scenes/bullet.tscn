@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dk6jqhbns7s0r"]
+
+[ext_resource type="Texture2D" uid="uid://gnw0ianmbnft" path="res://sprites/8-bit_sprites-Sheet.png" id="1_mkf8s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y25gk"]
+size = Vector2(34, 6)
+
+[node name="Bullet" type="Area2D" unique_id=107784941]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=933947960]
+texture = ExtResource("1_mkf8s")
+region_enabled = true
+region_rect = Rect2(61, 3, 36, 8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=577807276]
+shape = SubResource("RectangleShape2D_y25gk")
