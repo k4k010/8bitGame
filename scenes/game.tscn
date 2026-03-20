@@ -1,7 +1,11 @@
 [gd_scene format=4 uid="uid://h5fi26wqj80b"]
 
 [ext_resource type="PackedScene" uid="uid://dv8dg2iqnxbjt" path="res://scenes/player.tscn" id="1_uwrxv"]
-[ext_resource type="Texture2D" uid="uid://gnw0ianmbnft" path="res://sprites/8-bit_sprites-Sheet.png" id="2_yqjtg"]
+[ext_resource type="Texture2D" uid="uid://gnw0ianmbnft" path="res://sprites/8bit-animations/8-bit_sprites-Sheet.png" id="2_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://bbcgisixapkwq" path="res://scenes/killzone.tscn" id="3_lnu2h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lnu2h"]
+size = Vector2(34, 40)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yqjtg"]
 texture = ExtResource("2_yqjtg")
@@ -295,11 +299,25 @@ z_index = 5
 position = Vector2(194, 148)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1016723031]
+position = Vector2(0, -84)
 scale = Vector2(0.9154614, 0.9154614)
 zoom = Vector2(2, 2)
 process_callback = 0
 limit_bottom = 300
 position_smoothing_enabled = true
+
+[node name="Killzone" parent="." unique_id=719887047 instance=ExtResource("3_lnu2h")]
+z_index = 1
+position = Vector2(306, 188)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone" unique_id=345564741]
+shape = SubResource("RectangleShape2D_lnu2h")
+
+[node name="Sprite2D" type="Sprite2D" parent="Killzone" unique_id=1126030038]
+physics_interpolation_mode = 2
+texture = ExtResource("2_yqjtg")
+region_enabled = true
+region_rect = Rect2(150, 104, 52, 40)
 
 [node name="TileMaps" type="Node" parent="." unique_id=1842023033]
 
