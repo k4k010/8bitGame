@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://74v5r4jtwu6r"]
+
+[ext_resource type="Texture2D" uid="uid://cjxh1p5501qg8" path="res://sprites/8bit-animations/8-bit_sprites.webp" id="1_0u1id"]
+[ext_resource type="Script" uid="uid://c4ng7n4nvr4t6" path="res://scripts/Bullet.cs" id="1_fuynt"]
+
+[node name="8bit_bullet" type="CharacterBody2D" unique_id=654511480]
+z_index = 5
+script = ExtResource("1_fuynt")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2008187479]
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("1_0u1id")
+region_enabled = true
+region_rect = Rect2(208, 101, 32, 5)

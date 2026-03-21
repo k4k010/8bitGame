@@ -5,9 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://dbye7ongf0nu4" path="res://sprites/8bit-animations/8Bit_Idle-animation.png" id="3_qhqgy"]
 [ext_resource type="Texture2D" uid="uid://bja1lcicd0h8f" path="res://sprites/8bit-animations/8Bit_run-animation.png" id="4_dqkch"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
-size = Vector2(31, 34)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_tuyoq"]
 atlas = ExtResource("3_qhqgy")
 region = Rect2(0, 0, 64, 64)
@@ -152,15 +149,22 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
+size = Vector2(31, 34)
+
 [node name="Player" type="CharacterBody2D" unique_id=1531108911]
 script = ExtResource("1_g2els")
+
+[node name="Flip" type="Node2D" parent="." unique_id=103529074]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Flip" unique_id=462829838]
+sprite_frames = SubResource("SpriteFrames_tuyoq")
+animation = &"Idle"
+autoplay = "Idle"
+
+[node name="BulletSpawnPos" type="Marker2D" parent="Flip" unique_id=1949326583]
+position = Vector2(48, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1980751667]
 position = Vector2(-0.5, 2)
 shape = SubResource("RectangleShape2D_qhqgy")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=462829838]
-sprite_frames = SubResource("SpriteFrames_tuyoq")
-animation = &"Run"
-autoplay = "Idle"
-frame_progress = 0.4114179

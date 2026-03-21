@@ -6,14 +6,22 @@ using System.Security.Cryptography.X509Certificates;
 public partial class Player : CharacterBody2D
 {
 	public enum States {IdleState, RunState, JumpState, FallState}
-	public const float Speed = 300.0f;
+	public const float Speed = 150.0f;
 	public const float JumpVelocity = -320.0f;
 	public const float Gravity = 1000.0f;
 	public States State = States.IdleState;
+	
+	private Vector2 tempFlipScale;
+	private Node2D _flipNode;
 	private AnimatedSprite2D _animatedSprite;
+	private CharacterBody2D _bullet;
+	private Marker2D _bulletSpawnPos;
+	private readonly PackedScene _bulletScene = ResourceLoader.Load<PackedScene>("res://scenes/8bit_bullet.tscn");
 	
 	public override void _Ready(){
-		_animatedSprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");	
+		_flipNode = GetNode<Node2D>("Flip");
+		_animatedSprite = GetNode<AnimatedSprite2D>("Flip/AnimatedSprite2D");
+		_bulletSpawnPos = GetNode<Marker2D>("Flip/BulletSpawnPos");
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -28,13 +36,26 @@ public partial class Player : CharacterBody2D
 		{
 			velocity.X = Mathf.MoveToward(velocity.X, 0, Speed/2);	
 		}
+		
 		if(direction.X < 0)
 		{
-			_animatedSprite.FlipH = true;
+			tempFlipScale = _flipNode.Scale;
+			tempFlipScale.X = -1.0f;
+			_flipNode.Scale = tempFlipScale;
 		}
 		else if (direction.X > 0)
 		{
-			_animatedSprite.FlipH = false;
+			tempFlipScale = _flipNode.Scale;
+			tempFlipScale.X = 1.0f;
+			_flipNode.Scale = tempFlipScale;
+		}
+		if(Input.IsActionJustPressed("Shoot"))
+		{
+			GD.Print("Shooting");
+			var bullet = (Bullet)_bulletScene.Instantiate();
+			bullet.GlobalPosition = _bulletSpawnPos.GlobalPosition;
+			bullet.vel = tempFlipScale.X;
+			GetParent().AddChild(bullet);
 		}
 		if (!IsOnFloor())
 		{
@@ -75,7 +96,7 @@ public partial class Player : CharacterBody2D
 				{
 					_animatedSprite.Play("Jump");
 					velocity.X = direction.X * Speed;
-					if (Input.IsActionJustReleased("Jump") && !IsOnFloor())
+					if (velocity.Y > 0 && !IsOnFloor())
 					{
 						velocity.Y = Math.Max(velocity.Y, JumpVelocity/4);
 						State = States.FallState;
@@ -90,7 +111,7 @@ public partial class Player : CharacterBody2D
 				{
 					if(velocity.Y > 0 && !IsOnFloor())
 					{
-						velocity.Y += (float)(Gravity*1.5) * (float)delta;
+						velocity.Y += (float)(Gravity) * (float)delta;
 					}
 					if (IsOnFloor())
 					{

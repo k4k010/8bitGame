@@ -9,15 +9,15 @@ public partial class Killzone : Area2D
 	{
 		base._Ready();
 		_timer = GetNode<Timer>("DeathCooldown");
-		BodyEntered += HandlePlayerOverlap;
+		BodyEntered += OnBodyEntered;
 		_timer.Timeout += OnTimerTimeout;
 	}
 	
-	private void HandlePlayerOverlap(Node2D body)
+	private void OnBodyEntered(Node2D body)
 	{
 		if(body is Player player)
 		{
-			GD.Print("Entered Killzone");
+			GD.Print("You Died!");
 			_timer.Start();
 		}
 	}
