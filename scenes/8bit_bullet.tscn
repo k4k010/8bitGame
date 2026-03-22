@@ -12,3 +12,5 @@ scale = Vector2(1.2, 1.2)
 texture = ExtResource("1_0u1id")
 region_enabled = true
 region_rect = Rect2(208, 101, 32, 5)
+
+[node name="BulletTimer" type="Timer" parent="." unique_id=111058389]

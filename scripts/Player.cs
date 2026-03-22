@@ -11,7 +11,7 @@ public partial class Player : CharacterBody2D
 	public const float Gravity = 1000.0f;
 	public States State = States.IdleState;
 	
-	private Vector2 tempFlipScale;
+	private Vector2 tempFlipScale = new Vector2(1.0f, 0.0f);
 	private Node2D _flipNode;
 	private AnimatedSprite2D _animatedSprite;
 	private CharacterBody2D _bullet;
