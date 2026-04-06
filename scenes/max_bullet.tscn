@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bk71y4vjlie0"]
+
+[ext_resource type="Script" uid="uid://bdjsku2m0f5mi" path="res://scripts/EnemyProjectile.cs" id="1_cq86l"]
+[ext_resource type="Texture2D" uid="uid://dpkqgpowjje2d" path="res://Strawberry.webp" id="1_fpkni"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fpkni"]
+radius = 5.0
+
+[node name="Area2D" type="Area2D" unique_id=2046007370]
+script = ExtResource("1_cq86l")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1778062125]
+scale = Vector2(0.11227519, 0.11227519)
+texture = ExtResource("1_fpkni")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1456181507]
+shape = SubResource("CircleShape2D_fpkni")

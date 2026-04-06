@@ -17,12 +17,12 @@ public partial class Killzone : Area2D
 	{
 		if(body is Player player)
 		{
-			GD.Print("You Died!");
 			_timer.Start();
 		}
 	}
-	
-	public void OnTimerTimeout(){
+
+	public void OnTimerTimeout()
+	{
 		GetTree().ReloadCurrentScene();
 	}
 }

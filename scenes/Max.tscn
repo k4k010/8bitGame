@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://o0nw5l64r3ji"]
+
+[ext_resource type="Texture2D" uid="uid://bt0fafli0e4f4" path="res://sprites/max/Max.png" id="1_fodac"]
+[ext_resource type="Script" uid="uid://b3y0ehcblf673" path="res://scripts/Max.cs" id="1_g5ps7"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fodac"]
+height = 60.0
+
+[node name="Max" type="CharacterBody2D" unique_id=1953780090]
+script = ExtResource("1_g5ps7")
+
+[node name="ShootPos" type="Marker2D" parent="." unique_id=2011314345]
+position = Vector2(-26, -19)
+
+[node name="Hurtbox" type="Area2D" parent="." unique_id=1895824325]
+position = Vector2(1, -37)
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1613129998]
+position = Vector2(1, 7)
+shape = SubResource("CapsuleShape2D_fodac")
+
+[node name="Sprite2D" type="Sprite2D" parent="Hurtbox" unique_id=805474355]
+position = Vector2(-2, 5)
+texture = ExtResource("1_fodac")
+flip_h = true
+
+[node name="ShootCooldown" type="Timer" parent="." unique_id=1635159939]

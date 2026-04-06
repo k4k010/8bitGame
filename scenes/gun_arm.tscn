@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://rr6i0y4bviqn"]
+
+[ext_resource type="Script" uid="uid://rkbjbjmvw7te" path="res://scripts/GunArm.cs" id="1_iarwf"]
+[ext_resource type="Texture2D" uid="uid://bxvdd73o517s1" path="res://sprites/8bit/8BitGunArm.png" id="1_s45s8"]
+[ext_resource type="AudioStream" uid="uid://ch3rthtjsdco0" path="res://sfx/8Bit/8bit_atk_02.ogg" id="3_3xc1q"]
+
+[node name="GunArm" type="Node2D" unique_id=1678136309]
+script = ExtResource("1_iarwf")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1792089993]
+position = Vector2(15, -1)
+rotation = 0.7330383
+texture = ExtResource("1_s45s8")
+
+[node name="BulletSpawnPos" type="Marker2D" parent="." unique_id=1144947087]
+position = Vector2(50, -10)
+
+[node name="BulletSound" type="AudioStreamPlayer2D" parent="." unique_id=1702700488]
+stream = ExtResource("3_3xc1q")
+volume_db = -6.71
