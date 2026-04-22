@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Hurtbox : Area2D
+public partial class HurtboxComponent : Area2D
 {
 	public HealthComponent healthComponent;
 	
@@ -13,8 +13,10 @@ public partial class Hurtbox : Area2D
 	
 	public void OnAreaEntered(Area2D area)
 	{
-		if (area is HitBox hitbox)
+		GD.Print($"Something entered the hurtbox: {area.Name}");
+		if (area is HitboxComponent hitbox)
 		{
+			GD.Print("It was a hitbox! Taking damage...");
 			healthComponent.TakeDamage(hitbox.damage);
 		}
 	}

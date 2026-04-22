@@ -2,10 +2,10 @@
 
 [ext_resource type="Texture2D" uid="uid://cjxh1p5501qg8" path="res://sprites/8bit/8-bit_sprites.webp" id="1_0u1id"]
 [ext_resource type="Script" uid="uid://c4ng7n4nvr4t6" path="res://scripts/Bullet.cs" id="1_fuynt"]
-[ext_resource type="Script" uid="uid://6emn03oxrjij" path="res://scripts/HitBox.cs" id="3_oajyj"]
+[ext_resource type="PackedScene" uid="uid://bbcj7cj0i05ht" path="res://components/scenes/hitbox_component.tscn" id="3_oajyj"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fuynt"]
-size = Vector2(48.481483, 16.632214)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qs4e3"]
+size = Vector2(49.466087, 19.222622)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oajyj"]
 size = Vector2(46.43029, 16.589827)
@@ -22,20 +22,16 @@ texture = ExtResource("1_0u1id")
 region_enabled = true
 region_rect = Rect2(208, 101, 32, 5)
 
-[node name="HitBox" type="Area2D" parent="." unique_id=1881949895]
-collision_layer = 2
-collision_mask = 0
-monitoring = false
-script = ExtResource("3_oajyj")
+[node name="HitboxComponent" parent="." unique_id=2001250562 instance=ExtResource("3_oajyj")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox" unique_id=1843497570]
-position = Vector2(-0.19449416, 1.1661012)
-scale = Vector2(1, 0.99999994)
-skew = -0.9040807
-shape = SubResource("RectangleShape2D_fuynt")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" unique_id=1958059991]
+position = Vector2(-0.2231822, 0.85286367)
+skew = -0.90059006
+shape = SubResource("RectangleShape2D_qs4e3")
 
 [node name="ImpactDetector" type="Area2D" parent="." unique_id=1292832519]
 collision_layer = 0
+collision_mask = 2
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ImpactDetector" unique_id=528529837]

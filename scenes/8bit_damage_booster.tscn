@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://cci4jjtg8iitw"]
+
+[ext_resource type="Texture2D" uid="uid://gnw0ianmbnft" path="res://sprites/8bit/8-bit_sprites-Sheet.png" id="1_5q5d6"]
+[ext_resource type="Script" uid="uid://bldvman721qsn" path="res://scripts/DamageBooster.cs" id="1_wp8ks"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ocds8"]
+size = Vector2(22.982277, 13.949773)
+
+[sub_resource type="Animation" id="Animation_wp8ks"]
+resource_name = "DBThrow"
+length = 2.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(0.35355362, 2.0000005),
+"update": 0,
+"values": [0.0, 12.566370614359172]
+}
+
+[sub_resource type="Animation" id="Animation_de4dj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tuth1"]
+_data = {
+&"DBThrow": SubResource("Animation_wp8ks"),
+&"RESET": SubResource("Animation_de4dj")
+}
+
+[node name="8BitDamageBooster" type="RigidBody2D" unique_id=1118324809]
+disable_mode = 1
+collision_layer = 0
+script = ExtResource("1_wp8ks")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=64380154]
+position = Vector2(-0.23279953, 1.9293048)
+shape = SubResource("RectangleShape2D_ocds8")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1245891168]
+texture = ExtResource("1_5q5d6")
+region_enabled = true
+region_rect = Rect2(66, 127, 28, 17)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D" unique_id=1717222246]
+libraries/ = SubResource("AnimationLibrary_tuth1")
+autoplay = &"DBThrow"

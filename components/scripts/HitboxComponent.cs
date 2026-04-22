@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class HitBox : Area2D
+public partial class HitboxComponent : Area2D
 {
 	[Export]
 	public int damage = 25;
@@ -12,14 +12,9 @@ public partial class HitBox : Area2D
 		collisionShape = GetNode<CollisionShape2D>("CollisionShape2D");
 	} 
 	
-	private void _init()
+	public HitboxComponent()
 	{
 		this.CollisionMask = 0;
 		this.CollisionLayer = 2;
 	}
-	
-	//public void SetDisabled()
-	//{
-		//collisionShape.SetDeferred("disabled", true);
-	//}
 }

@@ -1,24 +1,42 @@
 [gd_scene format=3 uid="uid://dv8dg2iqnxbjt"]
 
 [ext_resource type="Script" uid="uid://caeb61emburff" path="res://scripts/StateMachineNodes/Player.cs" id="1_qlg0r"]
-[ext_resource type="Texture2D" uid="uid://xksqn00os7vt" path="res://sprites/8bit/8-bit_spritest.png" id="2_g2els"]
+[ext_resource type="Texture2D" uid="uid://dj1eoek233350" path="res://sprites/8bit/8Bit_Fall-animation.png" id="2_a8ls1"]
+[ext_resource type="Texture2D" uid="uid://gnw0ianmbnft" path="res://sprites/8bit/8-bit_sprites-Sheet.png" id="3_qfm1y"]
 [ext_resource type="Texture2D" uid="uid://bpfmjoa03px5m" path="res://sprites/8bit/8Bit_IdleAndRun-animation(withoutLeftArm).png" id="3_y4r1p"]
-[ext_resource type="Script" uid="uid://o0eotox5hgmv" path="res://scripts/Hurtbox.cs" id="5_3v2ag"]
+[ext_resource type="Texture2D" uid="uid://cykvjcofd6v41" path="res://sprites/8bit/8Bit_Jump-animation.png" id="4_a8ls1"]
 [ext_resource type="AudioStream" uid="uid://ly0qj6yqlo2r" path="res://sfx/8Bit/8bit_start_vo_01.ogg" id="5_qlg0r"]
 [ext_resource type="Script" uid="uid://btghgjioia4d8" path="res://scripts/StateMachineNodes/StateMachine.cs" id="6_smehm"]
 [ext_resource type="Script" uid="uid://dso1kn1fiulaa" path="res://scripts/StateMachineNodes/IdleState.cs" id="7_ur7pv"]
 [ext_resource type="Script" uid="uid://cry6wh6psqn2q" path="res://scripts/StateMachineNodes/RunState.cs" id="8_y4r1p"]
 [ext_resource type="Script" uid="uid://cu8j8nqp1iwr8" path="res://scripts/StateMachineNodes/JumpState.cs" id="9_ur7pv"]
 [ext_resource type="Script" uid="uid://bsgtcb4pdr2ia" path="res://scripts/StateMachineNodes/FallState.cs" id="10_y4r1p"]
-[ext_resource type="Script" uid="uid://bpnl7gdw8mmk" path="res://sprites/Components/HealthComponent.cs" id="11_3v2ag"]
 [ext_resource type="PackedScene" uid="uid://rr6i0y4bviqn" path="res://scenes/gun_arm.tscn" id="11_d2wvv"]
 [ext_resource type="Texture2D" uid="uid://b7vntot5q006j" path="res://sprites/8bit/healthbar/8BitHUD_healthbar-under.png" id="13_oprun"]
 [ext_resource type="Texture2D" uid="uid://cqigw0mhn4vty" path="res://sprites/8bit/healthbar/8BitHUD_healthbar-over.png" id="14_a8ls1"]
 [ext_resource type="Texture2D" uid="uid://cmjdh8vxm2p0m" path="res://sprites/8bit/healthbar/8BitHUD_healthbar-progress.png" id="15_qfm1y"]
+[ext_resource type="PackedScene" uid="uid://bl7j27rqq5m0a" path="res://components/scenes/hurtbox_component.tscn" id="17_fulsm"]
+[ext_resource type="PackedScene" uid="uid://cdyskgrqr86de" path="res://components/scenes/health_component.tscn" id="17_qfm1y"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ujl30"]
-atlas = ExtResource("2_g2els")
-region = Rect2(0, 42, 55, 42)
+atlas = ExtResource("2_a8ls1")
+region = Rect2(0, 0, 69, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pf23h"]
+atlas = ExtResource("2_a8ls1")
+region = Rect2(69, 0, 69, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dt7fs"]
+atlas = ExtResource("2_a8ls1")
+region = Rect2(138, 0, 69, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wqfne"]
+atlas = ExtResource("2_a8ls1")
+region = Rect2(207, 0, 69, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2dvfe"]
+atlas = ExtResource("3_qfm1y")
+region = Rect2(0, 96, 64, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d2wvv"]
 atlas = ExtResource("3_y4r1p")
@@ -68,9 +86,21 @@ region = Rect2(690, 0, 69, 64)
 atlas = ExtResource("3_y4r1p")
 region = Rect2(759, 0, 69, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_dqkch"]
-atlas = ExtResource("2_g2els")
-region = Rect2(4, 86, 53, 43)
+[sub_resource type="AtlasTexture" id="AtlasTexture_wnwbv"]
+atlas = ExtResource("4_a8ls1")
+region = Rect2(0, 0, 69, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gl8cc"]
+atlas = ExtResource("4_a8ls1")
+region = Rect2(69, 0, 69, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_487ah"]
+atlas = ExtResource("4_a8ls1")
+region = Rect2(138, 0, 69, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_md1ol"]
+atlas = ExtResource("4_a8ls1")
+region = Rect2(207, 0, 69, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4ni07"]
 atlas = ExtResource("3_y4r1p")
@@ -88,34 +118,31 @@ region = Rect2(138, 64, 69, 64)
 atlas = ExtResource("3_y4r1p")
 region = Rect2(207, 64, 69, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pf23h"]
-atlas = ExtResource("3_y4r1p")
-region = Rect2(276, 64, 69, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dt7fs"]
-atlas = ExtResource("3_y4r1p")
-region = Rect2(345, 64, 69, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wqfne"]
-atlas = ExtResource("3_y4r1p")
-region = Rect2(414, 64, 69, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wnwbv"]
-atlas = ExtResource("3_y4r1p")
-region = Rect2(483, 64, 69, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gl8cc"]
-atlas = ExtResource("3_y4r1p")
-region = Rect2(552, 64, 69, 64)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_tuyoq"]
 animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ujl30")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pf23h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dt7fs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wqfne")
 }],
 "loop": true,
 "name": &"Fall",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2dvfe")
+}],
+"loop": true,
+"name": &"Hurt",
 "speed": 5.0
 }, {
 "frames": [{
@@ -161,50 +188,44 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_dqkch")
+"texture": SubResource("AtlasTexture_wnwbv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gl8cc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_487ah")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_md1ol")
 }],
 "loop": true,
 "name": &"Jump",
-"speed": 5.0
+"speed": 12.0
 }, {
 "frames": [{
-"duration": 1.0,
+"duration": 1.8,
 "texture": SubResource("AtlasTexture_4ni07")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_l71n6")
 }, {
-"duration": 1.0,
+"duration": 1.8,
 "texture": SubResource("AtlasTexture_ke2ow")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_31cv2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pf23h")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dt7fs")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wqfne")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wnwbv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gl8cc")
 }],
 "loop": true,
 "name": &"Run",
-"speed": 12.0
+"speed": 8.0
 }]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qfm1y"]
+size = Vector2(33, 35)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qhqgy"]
 size = Vector2(31, 34)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_d2wvv"]
-size = Vector2(31, 35)
 
 [node name="Player" type="CharacterBody2D" unique_id=1531108911]
 collision_layer = 2
@@ -212,8 +233,17 @@ script = ExtResource("1_qlg0r")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=462829838]
 sprite_frames = SubResource("SpriteFrames_tuyoq")
-animation = &"Idle"
+animation = &"Jump"
 autoplay = "Idle"
+
+[node name="HurtboxComponent" parent="." unique_id=1699523896 instance=ExtResource("17_fulsm")]
+collision_layer = 2
+monitorable = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=611056560]
+position = Vector2(-0.5, 1.5)
+shape = SubResource("RectangleShape2D_qfm1y")
+debug_color = Color(0.9999066, 0, 0.11277779, 0.41960785)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1980751667]
 position = Vector2(-0.5, 2)
@@ -222,15 +252,6 @@ shape = SubResource("RectangleShape2D_qhqgy")
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=2116586344]
 stream = ExtResource("5_qlg0r")
 autoplay = true
-
-[node name="Hurtbox" type="Area2D" parent="." unique_id=1130694180]
-collision_mask = 2
-script = ExtResource("5_3v2ag")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" unique_id=1985377802]
-position = Vector2(0, 2)
-shape = SubResource("RectangleShape2D_d2wvv")
-debug_color = Color(0.5690623, 0, 0.10123349, 0.41960785)
 
 [node name="StateMachine" type="Node" parent="." unique_id=1413812373 node_paths=PackedStringArray("startingState")]
 script = ExtResource("6_smehm")
@@ -267,12 +288,10 @@ animationName = "Fall"
 [node name="GunArm" parent="." unique_id=1678136309 instance=ExtResource("11_d2wvv")]
 z_index = 4
 z_as_relative = false
-position = Vector2(0, -4)
-
-[node name="HealthComponent" type="Node" parent="." unique_id=821911545]
-script = ExtResource("11_3v2ag")
+position = Vector2(1, 0)
 
 [node name="Healthbar" type="TextureProgressBar" parent="." unique_id=1884747933]
+visible = false
 offset_left = -34.0
 offset_top = -42.0
 offset_right = 38.0
@@ -281,3 +300,5 @@ value = 50.0
 texture_under = ExtResource("13_oprun")
 texture_over = ExtResource("14_a8ls1")
 texture_progress = ExtResource("15_qfm1y")
+
+[node name="HealthComponent" parent="." unique_id=264981013 instance=ExtResource("17_qfm1y")]

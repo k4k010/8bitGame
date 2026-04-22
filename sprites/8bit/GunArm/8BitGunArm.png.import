@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bxvdd73o517s1"
-path="res://.godot/imported/8BitGunArm.png-c873d77169edfa8ce1889f46cc39102f.ctex"
+path="res://.godot/imported/8BitGunArm.png-5bf24861027abb0412167f7ec50684dd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/8bit/8BitGunArm.png"
-dest_files=["res://.godot/imported/8BitGunArm.png-c873d77169edfa8ce1889f46cc39102f.ctex"]
+source_file="res://sprites/8bit/GunArm/8BitGunArm.png"
+dest_files=["res://.godot/imported/8BitGunArm.png-5bf24861027abb0412167f7ec50684dd.ctex"]
 
 [params]
 

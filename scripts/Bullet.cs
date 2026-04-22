@@ -37,7 +37,10 @@ public partial class Bullet : Node2D
 	
 	public void OnImpactDetectorEntered(Area2D area) 
 	{
+		if(area is HurtboxComponent hurtbox)
+		{
 		QueueFree();
+		}
 	}
 	
 	//public void OnHitBoxEntered(Area2D area)

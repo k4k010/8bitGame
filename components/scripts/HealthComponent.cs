@@ -13,7 +13,7 @@ public partial class HealthComponent : Node
 	
 	public override void _Ready()
 	{
-		healthBar = GetNode<TextureProgressBar>("../Healthbar");
+		healthBar = GetNode<TextureProgressBar>("../../CanvasLayer/Healthbar");
 		
 		_health = _maxHealth;
 		healthBar.Value = _health;
@@ -33,7 +33,6 @@ public partial class HealthComponent : Node
 	
 	private void OnDeath()
 	{
-		GD.Print("GAME OVER");
 		GetTree().CallDeferred(SceneTree.MethodName.ReloadCurrentScene);
 	}
 }
