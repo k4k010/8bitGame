@@ -5,11 +5,11 @@ public partial class HitboxComponent : Area2D
 {
 	[Export]
 	public int damage = 25;
+	[Export]
 	public CollisionShape2D collisionShape;
 	
 	public override void _Ready()
 	{
-		collisionShape = GetNode<CollisionShape2D>("CollisionShape2D");
 	} 
 	
 	public HitboxComponent()

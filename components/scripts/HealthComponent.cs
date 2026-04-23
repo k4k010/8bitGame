@@ -3,18 +3,18 @@ using System;
 
 public partial class HealthComponent : Node
 {
-	private float _maxHealth = 100;
+	[Export]
+	private float _maxHealth;
 	private float _health;
-	
+
+	[Export]
 	public TextureProgressBar healthBar;
 	
 	[Signal]
 	public delegate void DeathEventHandler();
 	
 	public override void _Ready()
-	{
-		healthBar = GetNode<TextureProgressBar>("../../CanvasLayer/Healthbar");
-		
+	{	
 		_health = _maxHealth;
 		healthBar.Value = _health;
 		Death += OnDeath;
@@ -33,6 +33,13 @@ public partial class HealthComponent : Node
 	
 	private void OnDeath()
 	{
-		GetTree().CallDeferred(SceneTree.MethodName.ReloadCurrentScene);
+		if( GetParent() is Player player)
+		{
+			GetTree().CallDeferred(SceneTree.MethodName.ReloadCurrentScene);	
+		}
+		else
+		{
+			GetParent().QueueFree();
+		}
 	}
 }

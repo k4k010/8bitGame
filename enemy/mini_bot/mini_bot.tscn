@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://chjlny2djdxgp"]
+
+[ext_resource type="Script" uid="uid://bt0x1rjw45bfe" path="res://enemy/mini_bot/scripts/MiniBot.cs" id="1_osb2u"]
+[ext_resource type="Texture2D" uid="uid://cs72qs17u4r0w" path="res://enemy/mini_bot/sprites/8Bit_EnemyAnimations.png" id="1_xj7lc"]
+[ext_resource type="PackedScene" uid="uid://cdyskgrqr86de" path="res://components/scenes/health_component.tscn" id="3_ko2e3"]
+[ext_resource type="PackedScene" uid="uid://bl7j27rqq5m0a" path="res://components/scenes/hurtbox_component.tscn" id="4_tqk5l"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xj7lc"]
+radius = 14.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tqk5l"]
+radius = 14.0
+
+[node name="MiniBot" type="CharacterBody2D" unique_id=1099810907 node_paths=PackedStringArray("sprite", "collisionShape")]
+collision_layer = 2
+script = ExtResource("1_osb2u")
+sprite = NodePath("Sprite2D")
+collisionShape = NodePath("CollisionShape2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2130335488]
+texture = ExtResource("1_xj7lc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=123658299]
+position = Vector2(2, 3)
+shape = SubResource("CircleShape2D_xj7lc")
+
+[node name="HealthComponent" parent="." unique_id=264981013 node_paths=PackedStringArray("healthBar") instance=ExtResource("3_ko2e3")]
+_maxHealth = 100.0
+healthBar = NodePath("../healthBar")
+
+[node name="HurtboxComponent" parent="." unique_id=1699523896 node_paths=PackedStringArray("healthComponent") instance=ExtResource("4_tqk5l")]
+collision_layer = 2
+monitorable = true
+healthComponent = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=1865633342]
+position = Vector2(2, 3)
+shape = SubResource("CircleShape2D_tqk5l")
+debug_color = Color(0.97221905, 0.13375625, 0.26391807, 0.41960785)
+
+[node name="healthBar" type="TextureProgressBar" parent="." unique_id=464484433]
+offset_right = 40.0
+offset_bottom = 40.0

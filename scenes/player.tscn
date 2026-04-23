@@ -236,9 +236,10 @@ sprite_frames = SubResource("SpriteFrames_tuyoq")
 animation = &"Jump"
 autoplay = "Idle"
 
-[node name="HurtboxComponent" parent="." unique_id=1699523896 instance=ExtResource("17_fulsm")]
+[node name="HurtboxComponent" parent="." unique_id=1699523896 node_paths=PackedStringArray("healthComponent") instance=ExtResource("17_fulsm")]
 collision_layer = 2
 monitorable = true
+healthComponent = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=611056560]
 position = Vector2(-0.5, 1.5)
@@ -302,3 +303,4 @@ texture_over = ExtResource("14_a8ls1")
 texture_progress = ExtResource("15_qfm1y")
 
 [node name="HealthComponent" parent="." unique_id=264981013 instance=ExtResource("17_qfm1y")]
+_maxHealth = 100.0

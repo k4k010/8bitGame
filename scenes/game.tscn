@@ -1,10 +1,10 @@
 [gd_scene format=4 uid="uid://h5fi26wqj80b"]
 
 [ext_resource type="PackedScene" uid="uid://dv8dg2iqnxbjt" path="res://scenes/player.tscn" id="1_uwrxv"]
+[ext_resource type="PackedScene" uid="uid://chjlny2djdxgp" path="res://enemy/mini_bot/mini_bot.tscn" id="1_vtaks"]
 [ext_resource type="Texture2D" uid="uid://dh07u4rr38kow" path="res://sprites/8bit/8Bit_BackObjects.png" id="2_p57ef"]
 [ext_resource type="Texture2D" uid="uid://gnw0ianmbnft" path="res://sprites/8bit/8-bit_sprites-Sheet.png" id="2_yqjtg"]
 [ext_resource type="PackedScene" uid="uid://bbcgisixapkwq" path="res://scenes/killzone.tscn" id="3_lnu2h"]
-[ext_resource type="PackedScene" uid="uid://o0nw5l64r3ji" path="res://scenes/Max.tscn" id="4_iywne"]
 [ext_resource type="Texture2D" uid="uid://bdo3sh8q4qpqt" path="res://sprites/8bit/8BitBackground.png" id="5_iywne"]
 [ext_resource type="Texture2D" uid="uid://b7vntot5q006j" path="res://sprites/8bit/healthbar/8BitHUD_healthbar-under.png" id="7_0tnpc"]
 [ext_resource type="Texture2D" uid="uid://cqigw0mhn4vty" path="res://sprites/8bit/healthbar/8BitHUD_healthbar-over.png" id="8_vtaks"]
@@ -1093,6 +1093,9 @@ sources/1 = SubResource("TileSetAtlasSource_lnu2h")
 z_index = 5
 position = Vector2(194, 148)
 
+[node name="HealthComponent" parent="Player" index="7" unique_id=264981013 node_paths=PackedStringArray("healthBar")]
+healthBar = NodePath("../../CanvasLayer/Healthbar")
+
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1016723031]
 position = Vector2(0, -79)
 scale = Vector2(0.5498978, 0.5367803)
@@ -1123,10 +1126,6 @@ tile_set = SubResource("TileSet_lbhrr")
 position = Vector2(1, 326)
 shape = SubResource("WorldBoundaryShape2D_lbhrr")
 
-[node name="Max" parent="." unique_id=1953780090 instance=ExtResource("4_iywne")]
-z_index = 2
-position = Vector2(490, 208)
-
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2080910552]
 
 [node name="Healthbar" type="TextureProgressBar" parent="CanvasLayer" unique_id=989765451]
@@ -1146,3 +1145,9 @@ visible = false
 offset_right = 40.0
 offset_bottom = 23.0
 text = "Score :"
+
+[node name="MiniBot" parent="." unique_id=1099810907 instance=ExtResource("1_vtaks")]
+z_index = 2
+position = Vector2(595, 189)
+
+[editable path="Player"]

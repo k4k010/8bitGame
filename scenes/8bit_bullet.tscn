@@ -22,7 +22,8 @@ texture = ExtResource("1_0u1id")
 region_enabled = true
 region_rect = Rect2(208, 101, 32, 5)
 
-[node name="HitboxComponent" parent="." unique_id=2001250562 instance=ExtResource("3_oajyj")]
+[node name="HitboxComponent" parent="." unique_id=2001250562 node_paths=PackedStringArray("collisionShape") instance=ExtResource("3_oajyj")]
+collisionShape = NodePath("CollisionShape2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" unique_id=1958059991]
 position = Vector2(-0.2231822, 0.85286367)
